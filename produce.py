@@ -12,7 +12,7 @@ GPIO.output(15,GPIO.HIGH)
 
 print("\033[1;33;40m####################################################")
 print("#####      Nami Automatic Western Washer       #####")
-print("#####                Ver 1.12                  #####")
+print("#####                Ver 1.13                  #####")
 print("#####            Updated 2/28/2018             #####")
 print("####################################################")
 print("\033[4;34;40m               by Dr. Yunkai Zhang                  ")
