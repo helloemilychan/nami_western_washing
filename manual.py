@@ -14,25 +14,25 @@ check_1 = input("How many red lights in relay are ON?")
 if check_1 != 0:
 	print('Something is wrong, program ends.')
 	exit()
-input("Please turn on the 12 V power for all pumps, to confirm input 1:")
+
+def pump_on(pin_num,t):
+	GPIO.output(pin_num,GPIO.LOW)
+	time.sleep(t)
+	GPIO.output(pin_num,GPIO.HIGH)
+
+print("\033[1;33;40mTurn on 12V power and input time for each pump to start priming. Turn off 12V power when primed.")
 
 time.sleep(1)
 a = input("Time for PUMP_1:")
-GPIO.output(11,GPIO.LOW)
-time.sleep(a)
-GPIO.output(11,GPIO.HIGH)
+pump_on(11,a)
 
-b=input("Time for PUMP_2:")
-GPIO.output(13,GPIO.LOW)
-time.sleep(b)
-GPIO.output(13,GPIO.HIGH)
+b = input("Time for PUMP_2:")
+pump_on(13,b)
 
-c=input("Time for PUMP_3:")
-GPIO.output(15,GPIO.LOW)
-time.sleep(c)
-GPIO.output(15,GPIO.HIGH)
+c = input("Time for PUMP_3:")
+pump_on(15,c)
 
-print("Done")
+print("\033[0mDone. Place membranes and run produce.py")
 
 GPIO.cleanup()
 
