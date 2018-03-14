@@ -12,10 +12,10 @@ GPIO.output(15,GPIO.HIGH)
 
 print("\033[1;33;40m####################################################")
 print("#####      Nami Automatic Western Washer       #####")
-print("#####                Ver 1.13                  #####")
+print("#####                Ver 1.14                  #####")
 print("#####            Updated 2/28/2018             #####")
 print("####################################################")
-print("\033[4;34;40m               by Dr. Yunkai Zhang                  ")
+print("\033[1;34;40m               by Dr. Yunkai Zhang                  ")
 
 def pump_on(pin_num,t):
 	GPIO.output(pin_num,GPIO.LOW)
