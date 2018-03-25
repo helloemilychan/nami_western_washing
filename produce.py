@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import os
 import time
 
 GPIO.setwarnings(False)
@@ -65,5 +66,5 @@ print("\033[0mAdding TBST to keep membrane until visualize")
 pump_on(11,30)
 
 GPIO.cleanup()
-
+os.system('echo "Nami Job Finished" | mail -s Nami_Job_Done yunkai.zhang@vanderbilt.edu')
 
