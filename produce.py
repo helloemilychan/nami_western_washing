@@ -13,7 +13,7 @@ GPIO.output(15,GPIO.HIGH)
 
 print("\033[1;33;40m####################################################")
 print("#####      Nami Automatic Western Washer       #####")
-print("#####                Ver 1.14                  #####")
+print("#####                Ver 1.20                  #####")
 print("#####            Updated 2/28/2018             #####")
 print("####################################################")
 print("\033[1;34;40m               by Dr. Yunkai Zhang                  ")
@@ -38,25 +38,25 @@ d = input("Pause time (min) before/after 2nd Antibody incubation\n")
 time.sleep(1)
 for i in range(1,a+1):
 	s = '\033[0;36;40mWashing_{times}.'
-	print(s.format(times=i))
+	print(time.ctime() + ' ' + s.format(times=i))
 	pump_on(11,30)
 	time.sleep(b*60)
 	pump_on(15,90)
 	time.sleep(1)
 if d > 0:
 	pump_on(11,30)
-	print("Removing membrane from tray")
+	print(time.ctime() + ' ' + "Removing membrane from tray")
 	time.sleep(d*60)
 	pump_on(15,90)
 
-print("Adding 2nd Antibody")
+print(time.ctime() + ' ' + "Adding 2nd Antibody")
 pump_on(13,90)
 time.sleep(c*60)
 pump_on(15,180)
 
 for i in range(1,a+1):
 	s2 = 'Washing_{times} after 2nd Antibody.'
-	print(s2.format(times=i))
+	print(time.ctime() + ' ' + s2.format(times=i))
 	pump_on(11,30)
 	time.sleep(b*60)
 	pump_on(15,90)
