@@ -37,7 +37,7 @@ d = input("Pause time (min) before/after 2nd Antibody incubation\n")
 #print("This is a test script with short time setting.")
 time.sleep(1)
 for i in range(1,a+1):
-	s = '\033[0;36;40mWashing_{times}.'
+	s = '\033[0;36;40mWashing_{times}.\033[0m'
 	print(time.ctime() + ' ' + s.format(times=i))
 	pump_on(11,30)
 	time.sleep(b*60)
@@ -55,7 +55,7 @@ time.sleep(c*60)
 pump_on(15,180)
 
 for i in range(1,a+1):
-	s2 = 'Washing_{times} after 2nd Antibody.'
+	s2 = '\033[0;36;40mWashing_{times} after 2nd Antibody.\033[0m'
 	print(time.ctime() + ' ' + s2.format(times=i))
 	pump_on(11,30)
 	time.sleep(b*60)
@@ -66,5 +66,6 @@ print("\033[0mAdding TBST to keep membrane until visualize")
 pump_on(11,30)
 
 GPIO.cleanup()
+print("Sending email")
 os.system('echo "Nami Job Finished" | mail -s Nami_Job_Done yunkai.zhang@vanderbilt.edu')
 
