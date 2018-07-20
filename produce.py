@@ -13,8 +13,8 @@ GPIO.output(15,GPIO.HIGH)
 
 print("\033[1;33;40m####################################################")
 print("#####      Nami Automatic Western Washer       #####")
-print("#####                Ver 1.20                  #####")
-print("#####            Updated 2/28/2018             #####")
+print("#####                Ver 1.40                  #####")
+print("#####            Updated 7/20/2018             #####")
 print("####################################################")
 print("\033[1;34;40m               by Dr. Yunkai Zhang                  ")
 
@@ -28,13 +28,16 @@ check_1 = input("\033[0mHow many red lights in relay are ON?")
 if check_1 != 0:
 	print('Something is wrong, program ends.')
 	exit()
-input("Please turn on the 12 V power for all pumps, to confirm input 1:")
-a = input("How many times washing?")
-b = input("Washing time (in minutes)?")
-c = input("2nd Antibody incubation time? (in minutes)")
+input("Please turn on the 12 V power for all pumps, enter 1 to continue:")
+a = input("How many times washing?\n")
+b = input("Washing time (in minutes)?\n")
+c = input("2nd Antibody incubation time? (in minutes)\n")
 d = input("Pause time (min) before/after 2nd Antibody incubation\n")
+e = input("Sending email? (1=yes/2=no)\n")
 
 #print("This is a test script with short time setting.")
+print('Starting Nami...')
+print('Estimated Finish time {eta}'.format(eta=time.ctime(time.time()+a*b*120+a*240+c*60+270+d)))
 time.sleep(1)
 for i in range(1,a+1):
 	s = '\033[0;36;40mWashing_{times}.\033[0m'
@@ -66,6 +69,7 @@ print("\033[0mAdding TBST to keep membrane until visualize")
 pump_on(11,30)
 
 GPIO.cleanup()
-print("Sending email")
-os.system('echo "Nami Job Finished" | mail -s Nami_Job_Done yunkai.zhang@vanderbilt.edu')
+if e == 1:
+	print("Sending email")
+	os.system('echo "Nami Job Finished" | mail -s Nami_Job_Done yunkai.zhang@vanderbilt.edu')
 
